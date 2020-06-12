@@ -1,11 +1,22 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import MealsNavi from './navigation/mealnavigator'
+import Mainnav from './navigation/mealnavigator'
+import {createStore , combineReducers} from 'redux';
+import {Provider} from 'react-redux';
+import mealsReducer from './store/reducer/meals';
+
+
+const rootReducer = combineReducers({
+  meals : mealsReducer
+});
+
+const store = createStore(rootReducer);
+
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-    </View>
+   <Provider store={store}><Mainnav /></Provider> 
   );
 }
 
